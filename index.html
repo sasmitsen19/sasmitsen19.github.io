@@ -1,181 +1,567 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>From Knowing Pain to Cry in Rain — Sasmit Sen</title>
+  <title>Sasmit Sen — Original Quotes</title>
 
-  <meta name="description" content="From knowing pain to cry in rain, I lost. I learned. Hence rose again. — Sasmit Sen">
+  <meta name="description" content="Original quotes and writings by Sasmit Sen. Thoughts, reflections, and words on pain, growth, and life.">
   <meta name="author" content="Sasmit Sen">
-  <meta name="google-site-verification" content="C-WCqM4WhAnpHYf0548o9awfsXvEowVwSrAzjXtRRtk">
   <meta name="robots" content="index, follow">
+
+  <!-- Google Search Console verification -->
+  <meta name="google-site-verification" content="C-WCqM4WhAnpHYf0548o9awfsXvEowVwSrAzjXtRRtk">
+
+  <!-- Social preview -->
+  <meta property="og:title" content="Sasmit Sen — Original Quotes">
+  <meta property="og:description" content="Original quotes and writings by Sasmit Sen.">
+  <meta property="og:type" content="website">
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.06), transparent 30%),
-        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.04), transparent 30%),
-        #080808;
-
-      color: #f1eee9;
+      background: #050505;
+      color: #eeeeee;
       font-family: Georgia, "Times New Roman", serif;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       AMBIENT BACKGROUND
+    ========================= */
+
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: -10;
+      overflow: hidden;
+      background: #050505;
+    }
+
+    .glow {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      pointer-events: none;
+
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.07),
+        transparent 68%
+      );
+
+      filter: blur(35px);
+      animation: drift 16s ease-in-out infinite alternate;
+    }
+
+    .glow.one {
+      top: -240px;
+      left: -180px;
+    }
+
+    .glow.two {
+      right: -220px;
+      bottom: -220px;
+      animation-delay: -7s;
+    }
+
+    @keyframes drift {
+      from {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      to {
+        transform: translate3d(120px, 80px, 0) scale(1.18);
+      }
+    }
+
+    /* =========================
+       FLOATING PARTICLES
+    ========================= */
+
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: -5;
+      pointer-events: none;
       overflow: hidden;
     }
 
-    .container {
-      position: relative;
-      width: min(900px, 100%);
-      padding: 80px 55px;
-      text-align: center;
+    .particle {
+      position: absolute;
+      bottom: -10px;
 
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 28px;
+      width: 2px;
+      height: 2px;
 
-      background: rgba(255,255,255,0.035);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0.6;
+      }
+
+      80% {
+        opacity: 0.35;
+      }
+
+      100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+
+      z-index: 100;
+
+      padding: 22px 7%;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      background: rgba(5, 5, 5, 0.62);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
 
-      box-shadow:
-        0 30px 100px rgba(0,0,0,0.65),
-        inset 0 1px 0 rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 
-      animation: appear 1.2s ease forwards;
+      animation: navAppear 1s ease forwards;
     }
 
-    .number {
-      position: absolute;
-      top: 28px;
-      left: 35px;
-
+    .logo {
       font-family: Arial, sans-serif;
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 4px;
-      color: #777;
+      text-transform: uppercase;
+      color: #dddddd;
     }
 
-    .label {
+    nav a {
+      margin-left: 26px;
+
+      color: #777777;
+      text-decoration: none;
+
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    @keyframes navAppear {
+      from {
+        opacity: 0;
+        transform: translateY(-18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 120px 25px 80px;
+
+      text-align: center;
+      perspective: 1000px;
+    }
+
+    .hero-content {
+      max-width: 1000px;
+
+      transform-style: preserve-3d;
+
+      animation: heroAppear 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .small-title {
+      margin-bottom: 45px;
+
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+
+      color: #666666;
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 11vw, 125px);
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: -6px;
+
+      background: linear-gradient(
+        110deg,
+        #ffffff,
+        #666666,
+        #ffffff
+      );
+
+      background-size: 220% auto;
+
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+
+      animation: titleShine 9s linear infinite;
+    }
+
+    .hero-subtitle {
+      margin-top: 35px;
+
       font-family: Arial, sans-serif;
       font-size: 11px;
-      letter-spacing: 6px;
+      letter-spacing: 5px;
       text-transform: uppercase;
-      color: #888;
-      margin-bottom: 45px;
+
+      color: #666666;
     }
 
-    .quote {
-      font-size: clamp(28px, 5vw, 52px);
-      line-height: 1.38;
+    .scroll {
+      margin-top: 95px;
+
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+
+      color: #444444;
+
+      animation: scrollPulse 2.6s ease-in-out infinite;
+    }
+
+    @keyframes heroAppear {
+      from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes titleShine {
+      from {
+        background-position: 0% center;
+      }
+
+      to {
+        background-position: 220% center;
+      }
+    }
+
+    @keyframes scrollPulse {
+      0%,
+      100% {
+        opacity: 0.3;
+        transform: translateY(0);
+      }
+
+      50% {
+        opacity: 0.8;
+        transform: translateY(7px);
+      }
+    }
+
+    /* =========================
+       GENERAL SECTIONS
+    ========================= */
+
+    section {
+      padding: 130px 7%;
+    }
+
+    .section-title {
+      margin-bottom: 60px;
+
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+
+      color: #555555;
+    }
+
+    /* =========================
+       QUOTE CARD
+    ========================= */
+
+    .quote-card {
+      max-width: 900px;
+      margin: auto;
+
+      padding: 75px 55px;
+
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+
+      background: rgba(255, 255, 255, 0.025);
+
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+
+      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
+
+      transition:
+        transform 0.5s ease,
+        border-color 0.5s ease,
+        box-shadow 0.5s ease;
+    }
+
+    .quote-card:hover {
+      transform: translateY(-8px);
+
+      border-color: rgba(255, 255, 255, 0.2);
+
+      box-shadow: 0 50px 140px rgba(0, 0, 0, 0.7);
+    }
+
+    .quote-number {
+      margin-bottom: 35px;
+
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: 4px;
+
+      color: #444444;
+    }
+
+    blockquote {
+      font-size: clamp(29px, 5vw, 53px);
+      line-height: 1.4;
       font-style: italic;
       font-weight: 400;
       letter-spacing: -0.5px;
     }
 
-    .quote span {
+    blockquote span {
       display: block;
+
       opacity: 0;
-      animation: lineIn 0.8s ease forwards;
+      transform: translateY(18px);
+
+      animation: quoteReveal 0.9s ease forwards;
     }
 
-    .quote span:nth-child(1) { animation-delay: 0.3s; }
-    .quote span:nth-child(2) { animation-delay: 0.6s; }
-    .quote span:nth-child(3) { animation-delay: 0.9s; }
-    .quote span:nth-child(4) { animation-delay: 1.2s; }
+    blockquote span:nth-child(1) {
+      animation-delay: 0.25s;
+    }
 
-    .divider {
-      width: 55px;
-      height: 1px;
-      margin: 45px auto 25px;
-      background: #777;
+    blockquote span:nth-child(2) {
+      animation-delay: 0.55s;
+    }
+
+    blockquote span:nth-child(3) {
+      animation-delay: 0.85s;
+    }
+
+    blockquote span:nth-child(4) {
+      animation-delay: 1.15s;
+    }
+
+    @keyframes quoteReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .author {
+      margin-top: 50px;
+
       font-family: Arial, sans-serif;
-      font-size: 14px;
+      font-size: 12px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: #c9c4bd;
+
+      color: #aaaaaa;
     }
 
-    .details {
-      margin-top: 22px;
-      font-family: Arial, sans-serif;
-      font-size: 10px;
-      letter-spacing: 2px;
-      color: #666;
-      text-transform: uppercase;
-    }
+    .date {
+      margin-top: 15px;
 
-    .footer {
-      position: fixed;
-      bottom: 25px;
-      left: 0;
-      right: 0;
-
-      text-align: center;
       font-family: Arial, sans-serif;
       font-size: 9px;
-      letter-spacing: 3px;
-      color: #444;
+      letter-spacing: 2px;
       text-transform: uppercase;
+
+      color: #444444;
     }
 
-    @keyframes appear {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+      max-width: 750px;
+      margin: auto;
+
+      text-align: center;
     }
 
-    @keyframes lineIn {
-      from {
-        opacity: 0;
-        transform: translateY(12px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .about p {
+      font-size: 18px;
+      line-height: 2;
+
+      color: #888888;
     }
+
+    .about strong {
+      color: #dddddd;
+      font-weight: normal;
+    }
+
+    /* =========================
+       AUTHORSHIP
+    ========================= */
+
+    .authorship {
+      max-width: 700px;
+      margin: auto;
+
+      padding: 55px 35px;
+
+      text-align: center;
+
+      border-top: 1px solid #1c1c1c;
+      border-bottom: 1px solid #1c1c1c;
+    }
+
+    .authorship p {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      line-height: 2.2;
+      letter-spacing: 1px;
+
+      color: #666666;
+    }
+
+    .authorship strong {
+      color: #bbbbbb;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 80px 20px;
+
+      text-align: center;
+
+      border-top: 1px solid #111111;
+
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+
+      color: #333333;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media (max-width: 600px) {
-      .container {
-        padding: 60px 25px;
-        border-radius: 22px;
+
+      nav {
+        padding: 18px 20px;
       }
 
-      .number {
-        top: 20px;
-        left: 22px;
+      nav a {
+        margin-left: 13px;
+        font-size: 9px;
       }
 
-      .label {
-        margin-bottom: 32px;
-        letter-spacing: 4px;
+      .hero h1 {
+        letter-spacing: -3px;
       }
 
-      .quote {
+      section {
+        padding: 90px 20px;
+      }
+
+      .quote-card {
+        padding: 50px 25px;
+      }
+
+      blockquote {
         font-size: 29px;
       }
 
-      .divider {
-        margin-top: 35px;
+      .about p {
+        font-size: 16px;
+      }
+
+      .glow {
+        width: 350px;
+        height: 350px;
+      }
+    }
+
+    /* Respect reduced-motion settings */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
       }
     }
   </style>
@@ -183,32 +569,183 @@
 
 <body>
 
-  <main class="container">
+  <!-- =========================
+       BACKGROUND
+  ========================= -->
 
-    <div class="number">01</div>
-
-    <div class="label">Original Quote</div>
-
-    <div class="quote">
-      <span>“From knowing pain to cry in rain,</span>
-      <span>I lost.</span>
-      <span>I learned.</span>
-      <span>Hence rose again.”</span>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="author">Sasmit Sen</div>
-
-    <div class="details">
-      First published · September 8, 2026
-    </div>
-
-  </main>
-
-  <div class="footer">
-    An original work by Sasmit Sen
+  <div class="background">
+    <div class="glow one"></div>
+    <div class="glow two"></div>
   </div>
+
+  <div class="particles" aria-hidden="true">
+    <div class="particle" style="left: 8%; animation-duration: 13s; animation-delay: -3s;"></div>
+    <div class="particle" style="left: 18%; animation-duration: 17s; animation-delay: -9s;"></div>
+    <div class="particle" style="left: 29%; animation-duration: 14s; animation-delay: -5s;"></div>
+    <div class="particle" style="left: 41%; animation-duration: 19s; animation-delay: -12s;"></div>
+    <div class="particle" style="left: 53%; animation-duration: 15s; animation-delay: -7s;"></div>
+    <div class="particle" style="left: 64%; animation-duration: 18s; animation-delay: -11s;"></div>
+    <div class="particle" style="left: 76%; animation-duration: 13s; animation-delay: -4s;"></div>
+    <div class="particle" style="left: 88%; animation-duration: 20s; animation-delay: -15s;"></div>
+  </div>
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
+
+  <nav>
+    <div class="logo">Sasmit Sen</div>
+
+    <div>
+      <a href="#quotes">Quotes</a>
+      <a href="#about">About</a>
+    </div>
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <header class="hero">
+
+    <div class="hero-content" id="heroContent">
+
+      <div class="small-title">
+        Original Writings
+      </div>
+
+      <h1>Sasmit Sen</h1>
+
+      <div class="hero-subtitle">
+        Thoughts · Words · Life
+      </div>
+
+      <div class="scroll">
+        ↓ &nbsp; Scroll to explore
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       QUOTES
+  ========================= -->
+
+  <section id="quotes">
+
+    <div class="section-title">
+      Selected Quote · 01
+    </div>
+
+    <div class="quote-card">
+
+      <div class="quote-number">
+        SS / 001
+      </div>
+
+      <blockquote>
+        <span>“From knowing pain to cry in rain,</span>
+        <span>I lost.</span>
+        <span>I learned.</span>
+        <span>Hence rose again.”</span>
+      </blockquote>
+
+      <div class="author">
+        — Sasmit Sen
+      </div>
+
+      <div class="date">
+        First published · September 8, 2026
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT
+  ========================= -->
+
+  <section id="about">
+
+    <div class="section-title">
+      About the Archive
+    </div>
+
+    <div class="about">
+
+      <p>
+        A growing collection of original thoughts,
+        reflections and words written by
+        <strong>Sasmit Sen</strong>.
+        <br><br>
+        Each piece is part of an evolving personal archive
+        of ideas, experiences and perspective.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       AUTHORSHIP
+  ========================= -->
+
+  <section>
+
+    <div class="authorship">
+
+      <p>
+        ORIGINAL WORK
+        <br><br>
+
+        The quote featured on this page was written and
+        published by <strong>Sasmit Sen</strong>.
+        <br><br>
+
+        First publication:
+        <strong>September 8, 2026</strong>
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+    © 2026 Sasmit Sen · Original Writings
+  </footer>
+
+
+  <!-- =========================
+       SUBTLE MOUSE PARALLAX
+  ========================= -->
+
+  <script>
+    const hero = document.getElementById("heroContent");
+
+    if (window.matchMedia("(pointer: fine)").matches) {
+      document.addEventListener("mousemove", (event) => {
+
+        const x = (event.clientX / window.innerWidth - 0.5) * 8;
+        const y = (event.clientY / window.innerHeight - 0.5) * 8;
+
+        hero.style.transform =
+          `translate3d(${x}px, ${y}px, 0)`;
+      });
+    }
+  </script>
 
 </body>
 </html>
+```
