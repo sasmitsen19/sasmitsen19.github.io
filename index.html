@@ -440,6 +440,72 @@
       color: #444444;
     }
 
+/* =========================
+   QUOTE ARCHIVE
+========================= */
+
+.archive-grid {
+  max-width: 900px;
+  margin: auto;
+}
+
+.archive-card {
+  padding: 45px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.018);
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    background 0.4s ease;
+}
+
+.archive-card:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(255, 255, 255, 0.18);
+
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.archive-number {
+  margin-bottom: 28px;
+
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 4px;
+
+  color: #444;
+}
+
+.archive-quote {
+  font-size: clamp(22px, 3.5vw, 36px);
+  line-height: 1.5;
+  font-style: italic;
+
+  color: #ddd;
+}
+
+.archive-author {
+  margin-top: 30px;
+
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  color: #777;
+}
+
+@media (max-width: 600px) {
+  .archive-card {
+    padding: 30px 22px;
+  }
+}
+    
     /* =========================
        ABOUT
     ========================= */
@@ -666,7 +732,41 @@
 
   </section>
 
+<!-- =========================
+     QUOTE ARCHIVE
+========================= -->
 
+<section id="archive">
+
+  <div class="section-title">
+    Quote Archive
+  </div>
+
+  <div class="archive-grid">
+
+    <article class="archive-card">
+
+      <div class="archive-number">
+        SS / 001
+      </div>
+
+      <p class="archive-quote">
+        “From knowing pain to cry in rain,<br>
+        I lost.<br>
+        I learned.<br>
+        Hence rose again.”
+      </p>
+
+      <div class="archive-author">
+        — Sasmit Sen
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+  
   <!-- =========================
        ABOUT
   ========================= -->
