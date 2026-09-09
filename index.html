@@ -632,6 +632,18 @@ text-decoration: none;
         scroll-behavior: auto !important;
       }
     }
+    /* SCROLL REVEAL */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
   </style>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23050505'/%3E%3Ctext x='50' y='67' text-anchor='middle' font-family='Arial' font-size='43' fill='white'%3ESS%3C/text%3E%3C/svg%3E">
 </head>
@@ -739,7 +751,7 @@ text-decoration: none;
      QUOTE ARCHIVE
 ========================= -->
 
-<section id="archive">
+<section id="archive" class="reveal">
 
   <div class="section-title">
     Quote Archive
@@ -774,7 +786,7 @@ text-decoration: none;
        ABOUT
   ========================= -->
 
-  <section id="about">
+ <section id="about" class="reveal">
 
     <div class="section-title">
       About the Archive
@@ -845,6 +857,25 @@ text-decoration: none;
       });
     }
   </script>
+  
+<script>
+  const revealElements = document.querySelectorAll('.reveal');
 
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  revealElements.forEach((element) => {
+    revealObserver.observe(element);
+  });
+</script>
+  
 </body>
 </html>
